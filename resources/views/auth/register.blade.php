@@ -58,6 +58,20 @@
                                 <input placeholder="Confirmar contraseña" type="password" class="form-control" name="password_confirmation" required />
                             </div>
 
+                                                    
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    {!! htmlFormSnippet() !!}
+                                    @error('g-recaptcha-response')
+                                        <span class="invalid-feedback" style="display:block">
+                                            <strong>{{ $message }}</strong>    
+                                        </span>
+                                    @enderror  
+                                </div>
+                            </div>
+                    
+
 
                         </div>
                         <div class="footer text-center">

@@ -35,12 +35,22 @@
                 <p>{{ $product->long_description }} </p>
 
             </div>
-            <div class="text-center">
-                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddToCart">
-                    <i class="material-icons">add</i> Agregar al carrito
-                </button>
-            </div>
+            
+             @guest
+                <div class="text-center" >
+                    <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddToCart" disabled="true">
+                        <i class="material-icons">add</i> Agregar al carrito
+                    </button>
+                </div>
 
+             @else
+                <div class="text-center">
+                    <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddToCart">
+                        <i class="material-icons">add</i> Agregar al carrito
+                    </button>
+                </div>
+
+            @endguest
 
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">

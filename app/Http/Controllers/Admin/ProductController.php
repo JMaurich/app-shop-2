@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,8 @@ class ProductController extends Controller
 
     public function create()
     {
-    	return view('admin.products.create'); // Devuelve el formulario para el registro de un producto
+        $categories = Category::orderBy('name')->get();//trae todas las categorias
+    	return view('admin.products.create')->with(compact('categories')); // Devuelve el formulario para el registro de un producto
     }
 
     public function store(Request $request) // Graba los productos en la base de datos
@@ -45,6 +47,7 @@ class ProductController extends Controller
     	$product->description = $request->input('description');
     	$product->price = $request->input('price');
     	$product->long_description = $request->input('long_description');
+        $product->category_id = $request->category_id;
     	$product->save(); //graba los datos en la table
 
     	return redirect('/admin/products');
@@ -53,8 +56,9 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::orderBy('name')->get();//trae todas las categorias
     	$product = Product::find($id);
-    	return view('admin.products.edit')->with(compact('product')); // devuelve el producto a editar
+    	return view('admin.products.edit')->with(compact('product', 'categories')); // devuelve el producto a editar
     }
 
     public function update(Request $request, $id) // modificaa los productos en la base de datos
@@ -65,6 +69,7 @@ class ProductController extends Controller
     	$product->description = $request->input('description');
     	$product->price = $request->input('price');
     	$product->long_description = $request->input('long_description');
+        $product->category_id = $request->category_id;
     	$product->save(); //graba los datos en la table
 
     	return redirect('/admin/products');

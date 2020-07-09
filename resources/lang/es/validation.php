@@ -181,5 +181,6 @@ return [
         'title'                 => 'título',
         'username'              => 'usuario',
         'year'                  => 'año',
+        'recaptcha' => 'Hey!!! :debes demostrar que no eres un robot!',
     ],
 ];

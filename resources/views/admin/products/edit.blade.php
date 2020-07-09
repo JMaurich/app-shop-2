@@ -36,12 +36,34 @@
                 </div>
 
                
-                <div class="form-group label-floating">
-                    <label class="control-label">Descripción</label>
-                    <input type="text" class="form-control" name="description" value="{{ $product->description }}">
-                </div>
+                 <div class="row">
+    
+                    <div class="col-sm-6">
+                        <label class="control-label">Descripción</label>
+                        <input type="text" class="form-control" name="description" value="{{ $product->description }}">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Categoría del producto</label>
+                            <select name="category_id" class="form-control" >
+                                <option value="0">General</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" @if($category->id == old('category_id',$product->category_id)) selected @endif>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                               
+                            </select>
+                        </div>
+                    </div>
                 
-                <textarea class="form-control" placeholder="Descripción extensa del producto " rows="5" name="long_description">{{ $product->long_description }}</textarea>
+                </div>
+
+
+
+
+                
+                <textarea class="form-control" placeholder="Descripción extensa del producto " rows="5" name="long_description">{{ old('long_description', $product->long_description) }}</textarea>
 
                 <button class="btn btn-primary">Guardar cambios</button>
                 <a href="{{ url('admin/products') }}" class="btn btn-default">Cancelar</a>
