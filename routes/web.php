@@ -18,9 +18,11 @@ Route::get('/', 'TestController@welcome');
 
 Auth::routes();
 
+Route::get('/search','SearchController@show'); // Busca el producto necesitado por el cliente
+Route::get('/products/json','SearchController@data'); // Busca el producto necesitado por el cliente
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/products/{id}','ProductController@show'); // Trae el formulario para nuevos productos
-
 Route::get('/categories/{category}','CategoryController@show'); // Trae el formulario para nuevos productos
 
 
