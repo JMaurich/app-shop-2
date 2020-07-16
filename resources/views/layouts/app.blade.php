@@ -20,7 +20,7 @@
     <link href="{{ asset('css/material-kit.css') }}" rel="stylesheet"/>
 
     
-     {!! htmlScriptTagJsApi() !!}
+     {{--{!! htmlScriptTagJsApi() !!}--}}
     @yield('styles')
 </head>
 
