@@ -161,12 +161,13 @@
             <div class="col-md-8 col-md-offset-2">
                 <h2 class="text-center title">Aún no te has registrado ?</h2>
                 <h4 class="text-center description">Registrate con tus datos basicos, y podrás realizar tus pedidos a travésde nuestro carrito de compras. Si aún no te decides a comprar, con tu cuenta de usuarios, podrás realizar tus consultas sin compromiso.</h4>
-                <form class="contact-form">
+                <form class="contact-form" method="GET" action="{{ route('register') }}">
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group label-floating">
                                 <label class="control-label">Nombre</label>
-                                <input type="email" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -177,15 +178,15 @@
                         </div>
                     </div>
 
-                    <div class="form-group label-floating">
+                    {{--<div class="form-group label-floating">
                         <label class="control-label">Tu consulta</label>
                         <textarea class="form-control" rows="4"></textarea>
-                    </div>
+                    </div>--}}
 
                     <div class="row">
                         <div class="col-md-4 col-md-offset-4 text-center">
                             <button class="btn btn-primary btn-raised">
-                                Enviar mensaje
+                                Iniciar registro
                             </button>
                         </div>
                     </div>

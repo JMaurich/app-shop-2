@@ -15,7 +15,7 @@
     <div class="section">
         <h2 class="title text-center">Editar categoría seleccionado</h2>
 
-            <form method = "post" action="{{ url('/admin/categories/'.$category->id.'/edit') }}">
+            <form method = "post" action="{{ url('/admin/categories/'.$category->id.'/edit') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 
                 <div class="row">
@@ -27,7 +27,15 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                </div>
+                        <label class="control-label">Imagen de la categoría</label>
+                            <input type="file" name="image">
+                            @if ($category->image)    
+                                <P class="help-block"> 
+                                    Subir solo si desea reemplazar la
+                                    <a href="{{ asset('/images/categories/'.$category->image) }}" target="_blank">imagen actual</a>
+                                </P>
+                            @endif
+                    </div>
                 
                 </div>
 
